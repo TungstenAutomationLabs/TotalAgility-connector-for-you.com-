@@ -119,9 +119,9 @@ The TotalAgility package included in this project stores the API key in a **Glob
 
 ### Getting Started
 
-1. Obtain an API key from <https://you.com/platform>.
+1. Obtain an API key from <https://you.com/apis>. Create an account to access the $100 free credits for API testing and to generate a key. 
 2. Import the TotalAgility package (see [Importing the TotalAgility Package](#importing-the-totalagility-package)) to deploy the custom services into your TotalAgility   environment.
-3. Update the ```youcom api key``` under "TotalAgility Studio Advacned" > "System data" > "Server variables" with your api key.
+3. Update the ```youcom api key``` under "TotalAgility Studio Advanced" > "System data" > "Server variables" with your api key.
 4. Test the custom services standalone or see the example processes and forms.
 5. Postman examples are provided to explore the native you.com APIs.  
 
