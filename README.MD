@@ -6,9 +6,9 @@ You.com offers three core capabilities that this connector exposes to TotalAgili
 
 | Capability | Description |
 |------------|-------------|
-| **Search** | Web search with AI-generated snippets |
-| **Research** | Deep research with citations and source analysis |
-| **Content** | AI content generation informed by live web data |
+| **Search** | Returns real-time, LLM-ready web and news results |
+| **Research** | Multi-step reasoning with web research capabilities |
+| **Content** | Retrieves HTML or Markdown content from any webpage |
 
 > For full details on available APIs see: <https://you.com/apis>
 
@@ -143,6 +143,8 @@ The TotalAgility package included in this project stores the API key in a **Glob
 │   └── ...                    #   - Pre-built requests for Search, Research & Content APIs
 ├── prompts/                   # Example prompts for TotalAgility agents
 │   └── TA_Chat_Formatting_Example.md
+├── response_data_models/      # Example API responses to create data models in TotalAgility
+│   └── search_response.json
 ```
 
 ### TotalAgility Package Includes
@@ -152,8 +154,29 @@ The TotalAgility package included in this project stores the API key in a **Glob
 | **Custom Services** | Server-side services that wrap the You.com REST APIs |
 | **Global Variable** | Securely holds the You.com API key |
 | **Category – "Agent Services"** | Organisational category for all connector artefacts |
-| **Web Service Definitions** | WSDL / REST service definitions consumed by custom services |
+| **Web Service Definitions** | REST service definitions consumed by custom services |
 | **Example Agent** | A working agent that demonstrates the Search API integration |
+
+
+
+#### Custom Services
+Creates a ```Custom Service Group``` called ```Agent Services```.
+
+**you.com web search**: Returns real-time, LLM-ready web and news results.
+**you.com contents**: Retrieves HTML or Markdown content from any webpage.
+**you.com research**: Multi-step reasoning with advanced web research capabilities.
+
+#### Global Variable
+The package imports a global variable called ```YOUCOMAPIKEY``` in the "Agent Services" category. 
+
+Update this variable to contain your you.com API key.
+
+#### Web Service Definitions
+ - youcom web search: Web service reference for the search API (HTTP GET)
+ - youcom contents: Web service reference for the contents API (HTTP POST)
+ - youcom research: Web service reference for the research API (HTTP POST)
+
+
 
 ### Postman Collection
 
@@ -175,6 +198,18 @@ To deploy the connector into your TotalAgility environment:
 
 > 📖 For detailed import instructions see the official documentation:
 > <https://docshield.tungstenautomation.com//TotalAgility/en_US/2026.1-sy4i5uG9Tu/help/Designer/All_Shared/Import/t_importpackage.html>
+
+### Configuring the Web Search Summariser Agent
+
+The package includes an example agent called **Web Search Summariser Agent**. To use it, you must register the agent process as a **Custom LLM** in TotalAgility:
+
+1. Open **TotalAgility Advanced Studio**.
+2. Navigate to **Integration → Generative AI**.
+3. Add a new **Custom LLM** entry and map it to the imported agent process.
+
+![Custom LLM Setup – Map the agent process under Integration > Generative AI](images/TA_configuration/Custom_LLM_Setup.png)
+
+Once configured, the Custom LLM will be available for use in GenAI Chat Controls and other TotalAgility components that support LLM integration.
 
 ---
 
