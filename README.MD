@@ -154,7 +154,6 @@ The following You.com API methods are used to provide the TotalAgility Custom Se
 ├── prompts/                   # Example prompts for TotalAgility agents
 │   └── TA_Chat_Formatting_Example.md
 ├── response_data_models/      # Example API responses to create data models in TotalAgility
-│   └── search_response.json
 ```
 
 ### TotalAgility Package Includes
