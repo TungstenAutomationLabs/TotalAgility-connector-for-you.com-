@@ -18,9 +18,10 @@ You.com offers three core capabilities that this connector exposes to TotalAgili
 
 - [Prerequisites](#prerequisites)
 - [Approach 1 – MCP Server](#approach-1--mcp-server)
-- [Approach 2 – REST API](#approach-2--rest-api)
+- [Approach 2 – REST API Custom Services](#approach-2--rest-api-custom-services)
 - [Project Contents](#project-contents)
 - [Importing the TotalAgility Package](#importing-the-totalagility-package)
+- [Postman Collection](#postman-collection)
 - [Resources](#resources)
 
 ---
@@ -66,12 +67,13 @@ The **Model Context Protocol (MCP)** approach allows TotalAgility agents to cons
 | `research` | Conduct deep research with cited sources |
 | `content` | Generate content grounded in live web data |
 
-As of TotalAgility 2026.1 MCP is supported for use in **Generative AI chat controls**, for both Generative AI and AI Knowledge Base / Knowledge Discovery use cases.
+As of TotalAgility 2026.1, MCP is supported for use in **Generative AI chat controls**, for both Generative AI and AI Knowledge Base / Knowledge Discovery use cases.
 
-In the TotalAgility 2026.2 & 2026.3 releases, support for MCP will be expanded to include consumption of MCP services (aka "Tools") via activity steps in TotalAgility workflows, automation processes and custom agents. 
+In the TotalAgility 2026.2 & 2026.3 releases, support for MCP will be expanded to include consumption of MCP services (aka "Tools") via activity steps in TotalAgility workflows, automation processes and custom agents.
 
 ### Step-by-Step Setup
-To configure MCP consumption in in **Generative AI chat controls** in TotalAgility 2026.1+.
+
+To configure MCP consumption in **Generative AI chat controls** in TotalAgility 2026.1+:
 
 #### Step 1 – Add the MCP Server
 
@@ -95,13 +97,13 @@ Run the form and interact with the chat control. The agent will now have access 
 
 ### Example Prompt
 
-An example prompt for formatting agent responses is provided in [`prompts/TA_Chat_Formatting_Example.md`](prompts/TA_Chat_Formatting_Example.md). This demonstrates how to instruct the agent on brand-consistent output formatting for use within TotalAgility chat controls.
+An example prompt for formatting agent responses is provided in [`prompts/TA_Chat_Formatting_Example.md`](prompts/TA_Chat_Formatting_Example.md). This demonstrates how to instruct the agent on brand-consistent output formatting for use within TotalAgility chat controls or Microsoft Teams.
 
 ---
 
-## Approach 2 – TotalAgility Custom Services using the you.com REST API
+## Approach 2 – REST API Custom Services
 
-The **REST API** approach gives full programmatic control over You.com's services. This is ideal when you need to call the APIs from TotalAgility workflows, automation processes or agents. 
+The **REST API** approach gives full programmatic control over You.com's services. This is ideal when you need to call the APIs from TotalAgility workflows, automation processes or agents.
 
 The sample package provided includes REST integrations packaged as TotalAgility Custom Services, and an example showing how to use the search Custom Service in a TotalAgility Agent.
 
@@ -113,26 +115,27 @@ All REST API calls require an API key passed via the `X-API-Key` header:
 X-API-Key: <YOUR_API_KEY>
 ```
 
-The TotalAgility package included in this project stores the API key in a **Global Variable** so it can be managed securely and referenced across services.
+The TotalAgility package included in this project stores the API key in a **Global Variable** called `YOUCOMAPIKEY` (in the "Agent Services" category) so it can be managed securely and referenced across services.
 
-👉 **Note:** Be sure to update this variable with your API key before using the samples. 
+👉 **Note:** Be sure to update this variable with your API key before using the samples.
 
 ### Getting Started
 
-1. Obtain an API key from <https://you.com/apis>. Create an account to access the $100 free credits for API testing and to generate a key. 
-2. Import the TotalAgility package (see [Importing the TotalAgility Package](#importing-the-totalagility-package)) to deploy the custom services into your TotalAgility   environment.
-3. Update the ```youcom api key``` under "TotalAgility Studio Advanced" > "System data" > "Server variables" with your api key.
+1. Obtain an API key from <https://you.com/platform>. Create an account to access the $100 free credits for API testing and to generate a key.
+2. Import the TotalAgility package (see [Importing the TotalAgility Package](#importing-the-totalagility-package)) to deploy the custom services into your TotalAgility environment.
+3. Update the `YOUCOMAPIKEY` variable under **TotalAgility Advanced Studio → System Data → Server Variables** with your API key.
 4. Test the custom services standalone or see the example processes and forms.
-5. Postman examples are provided to explore the native you.com APIs.  
+5. Postman examples are provided to explore the native You.com APIs.
 
 ### Available Endpoints
-The following you.com API methods are used to provide the TotalAgility Custom Services contained in the package. These Custom Services are in a category / group called "Agent Services". 
 
-| TA Custom Service | you.com Endpoint | Method | Description |
+The following You.com API methods are used to provide the TotalAgility Custom Services contained in the package. These Custom Services are in a category / group called "Agent Services".
+
+| TA Custom Service | You.com Endpoint | Method | Description |
 |-------------------|------------------|--------|-------------|
 | you.com web search | Search | `GET` | Web search with AI snippets |
 | you.com research | Research | `POST` | Deep research with citations |
-| you.com content | Content | `POST` | Content generation from live web data |
+| you.com content | Content | `POST` | Content retrieval from live web data |
 
 > Full API reference & quickstart: <https://docs.you.com/quickstart>
 
@@ -146,7 +149,7 @@ The following you.com API methods are used to provide the TotalAgility Custom Se
 │   ├── mcp_setup/             #   - MCP setup walkthrough screenshots
 │   └── TA_configuration/      #   - TotalAgility configuration screenshots
 ├── packages/                  # TotalAgility export package (.zip)
-├── postman/                   # Postman collection & environment
+├── postman/                   # Postman collection
 │   └── ...                    #   - Pre-built requests for Search, Research & Content APIs
 ├── prompts/                   # Example prompts for TotalAgility agents
 │   └── TA_Chat_Formatting_Example.md
@@ -160,38 +163,17 @@ The following you.com API methods are used to provide the TotalAgility Custom Se
 |------|------|-------------|
 | Agent Services | Custom service group | Groups all You.com custom services |
 | Agent Services | Category | Organisational category for all connector artefacts |
+| YOUCOMAPIKEY | Global variable | Securely holds the You.com API key |
 | you.com web search | Custom service | Returns real-time, LLM-ready web and news results |
 | you.com research | Custom service | Multi-step reasoning with advanced web research capabilities |
 | you.com content | Custom service | Retrieves HTML or Markdown content from any webpage |
+| youcom web search | Web service definition | REST service reference for the Search API (HTTP GET) |
+| youcom research | Web service definition | REST service reference for the Research API (HTTP POST) |
+| youcom content | Web service definition | REST service reference for the Content API (HTTP POST) |
 | Web Search Summariser Agent | Process | Example agent process demonstrating the Search API integration |
 | Web Search Summariser Example Chat Agent | Form | Example chat form wired to the Web Search Summariser Agent |
 
-![TotalAgility Pacakge Contents](images/youcom_connector_package.png "TotalAgility Pacakge Contents")
-
-#### Custom Services
-Creates a ```Custom Service Group``` called ```Agent Services```.
-
-**you.com web search**: Returns real-time, LLM-ready web and news results.
-**you.com contents**: Retrieves HTML or Markdown content from any webpage.
-**you.com research**: Multi-step reasoning with advanced web research capabilities.
-
-#### Global Variable
-The package imports a global variable called ```YOUCOMAPIKEY``` in the "Agent Services" category. 
-
-Update this variable to contain your you.com API key.
-
-#### Web Service Definitions
- - youcom web search: Web service reference for the search API (HTTP GET)
- - youcom contents: Web service reference for the contents API (HTTP POST)
- - youcom research: Web service reference for the research API (HTTP POST)
-
-
-
-### Postman Collection
-
-The [`postman/`](postman/) folder contains ready-made requests for each You.com API endpoint. Use these to explore and test the APIs before deploying into TotalAgility.
-
-👉 Note that an environment variable should be used to configure the you.com ```X-API-Key``` under the Authorization tab of this collection. The imported collection looks for this key in an environment variable called ```{{you.com api key}}```.
+![TotalAgility Package Contents](images/youcom_connector_package.png "TotalAgility Package Contents")
 
 ---
 
@@ -203,7 +185,7 @@ To deploy the connector into your TotalAgility environment:
 2. Navigate to **Settings → Import / Export → Import Package**.
 3. Select the package file from the [`packages/`](packages/) directory.
 4. Follow the import wizard to map any environment-specific settings.
-5. After import, update the **Global Variable** with your You.com API key.
+5. After import, update the `YOUCOMAPIKEY` global variable with your You.com API key.
 
 > 📖 For detailed import instructions see the official documentation:
 > <https://docshield.tungstenautomation.com//TotalAgility/en_US/2026.1-sy4i5uG9Tu/help/Designer/All_Shared/Import/t_importpackage.html>
@@ -222,6 +204,14 @@ Once configured, the Custom LLM will be available for use in Generative AI chat 
 
 ---
 
+## Postman Collection
+
+The [`postman/`](postman/) folder contains ready-made requests for each You.com API endpoint. Use these to explore and test the APIs independently of TotalAgility.
+
+👉 The imported collection expects the API key in a Postman environment variable called `{{you.com api key}}`. Set this under the **Authorization** tab of the collection.
+
+---
+
 ## Resources
 
 | Resource | Link |
@@ -231,3 +221,5 @@ Once configured, the Custom LLM will be available for use in Generative AI chat 
 | You.com MCP Server Docs | <https://docs.you.com/build-with-agents/mcp-server> |
 | You.com Platform (API Keys) | <https://you.com/platform> |
 | TotalAgility – Import Package | <https://docshield.tungstenautomation.com//TotalAgility/en_US/2026.1-sy4i5uG9Tu/help/Designer/All_Shared/Import/t_importpackage.html> |
+| Agentic Design Patterns for TotalAgility | <https://github.com/TungstenAutomationLabs/Agentic_Design_Patterns_For_TotalAgility> |
+| Teams Chat Client for TotalAgility Agents | <https://github.com/TungstenAutomationLabs/TotalAgility-MSTeams-Agent> |
