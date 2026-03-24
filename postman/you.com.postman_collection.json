@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "68cb40bc-d684-448b-b8d8-d09a724871b6",
+    "name": "you.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "5352113",
+    "_collection_link": "https://go.postman.co/collection/5352113-68cb40bc-d684-448b-b8d8-d09a724871b6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "web search example",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://ydc-index.io/v1/search?query=Where to go on holiday in france for walking and relaxing in the summer?&count=5&language=EN",
+              "protocol": "https",
+              "host": [
+                "ydc-index",
+                "io"
+              ],
+              "path": [
+                "v1",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "Where to go on holiday in france for walking and relaxing in the summer?"
+                },
+                {
+                  "key": "count",
+                  "value": "5"
+                },
+                {
+                  "key": "language",
+                  "value": "EN"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "research",
+      "item": [
+        {
+          "name": "research example",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"input\": \"What are key design patterns for implementing agents on TotalAgility?\",\r\n  \"research_effort\": \"standard\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.you.com/v1/research",
+              "protocol": "https",
+              "host": [
+                "api",
+                "you",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "research"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "contents",
+      "item": [
+        {
+          "name": "content example",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"urls\": [\"https://www.tungstenautomation.com/products/totalagility\"],\r\n    \"formats\": [\"markdown\"]\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://ydc-index.io/v1/contents",
+              "protocol": "https",
+              "host": [
+                "ydc-index",
+                "io"
+              ],
+              "path": [
+                "v1",
+                "contents"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "{{you.com api key}}",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
