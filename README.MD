@@ -207,7 +207,7 @@ Once configured, the Custom LLM will be available for use in Generative AI chat 
 
 The [`postman/`](postman/) folder contains ready-made requests for each You.com API endpoint. Use these to explore and test the APIs independently of TotalAgility.
 
-👉 The imported collection expects the API key in a Postman environment variable called `{{you.com api key}}`. Set this under the **Authorization** tab of the collection.
+👉 The imported collection expects the API key in a Postman environment variable called `{{you.com api key}}`. Set this under the **Authorization** tab of the collection or configure a variable with the same name in your environment to store the API Key.
 
 ---
 
