@@ -201,11 +201,11 @@ The package includes an example agent called **Web Search Summariser Agent**. To
 
 Once configured, the Custom LLM will be available for use in Generative AI chat controls and other TotalAgility components that support LLM integration.
 
-## Configuring the Services for use in TotalAgility Studio
+## Configuring the Custom Services for use in TotalAgility Studio
 
 To make the you.com services availabe TotalAgility Studio (formerly known as Quick Apps), you must enable the services for use. To do this: 
 
-> In Advanced Studio, navigate to ```System > System Settings > TotalAgility Studio > Enabled for Use``` and add each of the new services, then hit Save.
+> In Advanced Studio, navigate to ```System > System Settings > TotalAgility Studio > Enabled for Use``` and add each of the new you.com Custom Services, then hit Save.
 
 ---
 
